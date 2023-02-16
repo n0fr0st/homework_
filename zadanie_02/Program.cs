@@ -1,59 +1,18 @@
-﻿float[] GenArray1(int coll)
+﻿int getSumm(int m, int n, int summ)
 {
-    float[] arr = new float[coll];
-    float result;
-    for(int index = 0; index < arr.Length; index++)
+    if (m <= n)
     {
-        string coord;
-        if(index == 0)
-            coord = "b";
-        else
-            coord = "k";
-        Console.WriteLine($"Введите {coord}{1}.");
-        while (!float.TryParse(Console.ReadLine(), out result))
-        {
-                Console.WriteLine(" error try again");
-        }
-        arr[index] = result;
+        summ = summ + m;
+        m++;
+        return getSumm(m,n,summ);
     }
-    return arr;
+    return summ;
 }
-float[] GenArray2(int coll)
-{
-    float[] arr = new float[coll];
-    float result;
-    for(int index = 0; index < arr.Length; index++)
-    {
-        string coord;
-        if(index == 0)
-            coord = "b";
-        else
-            coord = "k";
-        Console.WriteLine($"Введите {coord}{2}.");
-        while (!float.TryParse(Console.ReadLine(), out result))
-        {
-                Console.WriteLine(" error try again");
-        }
-        arr[index] = result;
-    }
-    return arr;
-}
-float[] resultDot(float[] first, float[] second)
-{
-    float[] arr = new float[2];
-    arr[0]= (second[0] - first[0])/(first[1] - second[1]);
-    
-    arr[1]= ((first[1]*second[0] - first[0]*second[1])/(first[1] - second[1]));
-    return arr;
-}
-void printArray1(float[] array)
-{
-    Console.WriteLine($"Точка пересечения - ({string.Join("; ", array)})");
-}
-Console.WriteLine("Программа найдёт точку пересечения двух прямых, заданных уравнениями y = k1 * x + b1, y = k2 * x + b2");
-float[] dotCoord1 = GenArray1(2);   
-float[] dotCoord2 = GenArray2(2);
-printArray1(resultDot(dotCoord1, dotCoord2));
-
+System.Console.WriteLine("Введите число M - ");
+int m = Convert.ToInt32(Console.ReadLine());
+System.Console.WriteLine("Введите число N - ");
+int n = Convert.ToInt32(Console.ReadLine());
+int summ = 0;
+Console.WriteLine($"Сумма всех чисел от M до N - {getSumm(m, n, summ)}");
 
 
