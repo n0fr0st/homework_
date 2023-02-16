@@ -1,16 +1,15 @@
-﻿int getSumm(int m, int n, int summ)
+﻿void PrintNumber(int n)
 {
-    if (m <= n)
+    if(n != 1)
     {
-        summ = summ + m;
-        m++;
-        return getSumm(m,n,summ);
+        Console.Write($"{n}, ");
+                PrintNumber(n-1);
     }
-    return summ;
+    else
+    {
+        Console.WriteLine($"{n}");
+    }
 }
-System.Console.WriteLine("Введите число M - ");
-int m = Convert.ToInt32(Console.ReadLine());
-System.Console.WriteLine("Введите число N - ");
-int n = Convert.ToInt32(Console.ReadLine());
-int summ = 0;
-Console.WriteLine($"Сумма всех чисел от M до N - {getSumm(m, n, summ)}");
+Console.WriteLine("Задайте число и программа выведет все число в промежутке от вашего числа до 1.");
+int num = Convert.ToInt32(Console.ReadLine());
+PrintNumber(num);
