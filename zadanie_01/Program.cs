@@ -1,34 +1,16 @@
-﻿int[] GenArray(int coll)
+﻿int getSumm(int m, int n, int summ)
 {
-    int[] arr = new int[coll];
-    int result;
-    for(int index = 0; index < arr.Length; index++)
+    if (m <= n)
     {
-        Console.WriteLine($"Введите {index+1} число.");
-        while (!int.TryParse(Console.ReadLine(), out result))
-        {
-                Console.WriteLine(" error try again");
-        }
-        arr[index] = result;
+        summ = summ + m;
+        m++;
+        return getSumm(m,n,summ);
     }
-    return arr;
+    return summ;
 }
-int num(int[] coll)
-{
-    int result = 0;
-    for(int i = 0; i < coll.Length; i++)
-    {
-        if(coll[i] > 0)
-            result++;
-    }
-    Console.WriteLine($"Чисел которые больше 0 - {result}");
-    return result;
-}
-void printArray(int[] array)
-{
-    Console.WriteLine($"Ваши числа - {string.Join(", ", array)}");
-}
-Console.WriteLine("Введите количество чисел, которые вы хотите проверить, что они больше 0, а так же введите каждое число, чтобы его проверить.");
-int[] array = GenArray(Convert.ToInt32(Console.ReadLine()));
-printArray(array);
-num(array);
+System.Console.WriteLine("Введите число M - ");
+int m = Convert.ToInt32(Console.ReadLine());
+System.Console.WriteLine("Введите число N - ");
+int n = Convert.ToInt32(Console.ReadLine());
+int summ = 0;
+Console.WriteLine($"Сумма всех чисел от M до N - {getSumm(m, n, summ)}");
